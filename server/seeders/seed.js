@@ -9,7 +9,7 @@ db.once('open', async () => {
 
         console.log('Profiles seeded');
         process.exit(0);
-    }catch (err) {
+    } catch (err) {
         throw err;
     }
 });
