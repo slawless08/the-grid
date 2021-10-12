@@ -1,5 +1,8 @@
 const { Schema, model } = require('mongoose');
 const Group = require('./Group');
+const bcrypt = require('bcrypt');
+
+
 const profileSchema = new Schema({
     name: {
         type: String,

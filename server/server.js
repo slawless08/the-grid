@@ -1,9 +1,8 @@
-
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 
-const { typeDefs, resolvers } = require('./schmas');
+const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
@@ -34,14 +33,11 @@ db.once('open', () => {
     })
 });
 
-const express = require('express')
-const app = express()
-const port = 3001;
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+// })
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`Example app listening at http://localhost:${port}`)
+//   console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+// })
