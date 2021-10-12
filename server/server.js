@@ -1,3 +1,4 @@
+
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
@@ -32,3 +33,15 @@ db.once('open', () => {
         console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
     })
 });
+
+const express = require('express')
+const app = express()
+const port = 3001;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
