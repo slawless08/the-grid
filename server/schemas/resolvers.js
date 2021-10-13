@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Profile } = require('../models');
+const { Profile, Group, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -11,6 +11,13 @@ const resolvers = {
         profile: async (parent, { profileId }) => {
             return Profile.findOne({ _id: profileId });
         },
+        posts: async (parent, { name }) => {
+            const params = name ? { name } : {};
+            return Post.find(params);
+        },
+        post: async (paren, { postId }) => {
+            return Post.findOne({ _id: postId });
+        },
     },
 
     Mutation: {
@@ -21,16 +28,16 @@ const resolvers = {
             return { token, profile };
         },
 
-        login: async (parent, {email, password }) => {
+        login: async (parent, { email, password }) => {
             const profile = await Profile.findOne({ email });
 
-            if(!profile){
+            if (!profile) {
                 throw new AuthenticationError('No profile found with those credentials');
             }
 
             const correctPw = await profile.isCorrectPassword(password);
 
-            if(!correctPw){
+            if (!correctPw) {
                 throw new AuthenticationError('No profile found with those credentials');
             }
 
@@ -40,6 +47,27 @@ const resolvers = {
         // add remove profile?
 
         // add other mutations later for blogs, groups, etc.
+
+        addPost: async (parent, { text_content, author }) => {
+            const post = await Post.create({ text_content, author });
+
+            /*await Group.findOneAndUpdate(
+                { ** need a way to filter to find the group? ** }
+                { $addToSet: { posts: post._id }}
+                );*/
+
+            return post;
+        },
+
+        removePost: async (parent, { postId }) => {
+            return Post.findOneAndDelete({ _id: postId });
+        },
+        updatePost: async (parent, { postId, postText }) => {
+            return Post.findOneAndUpdate(
+                { _id: postId },
+                { text_content: postText },
+            );
+        },
     },
 };
 
