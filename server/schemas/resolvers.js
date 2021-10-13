@@ -66,6 +66,7 @@ const resolvers = {
             return Post.findOneAndUpdate(
                 { _id: postId },
                 { text_content: postText },
+                { new: true },
             );
         },
     },
