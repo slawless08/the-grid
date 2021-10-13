@@ -11,6 +11,12 @@ const groupSchema = new Schema({
         required: true,
         trim: true,
     },
+    users: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Profile",
+        },
+    ],
 });
 
 const Group = model('Group', groupSchema);
