@@ -11,18 +11,18 @@ const groupSchema = new Schema({
         required: true,
         trim: true,
     },
-    users: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Profile",
-        },
-    ],
-    posts: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Post",
-        },
-    ],
+    // users: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: "Profile",
+    //     },
+    // ],
+    // posts: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: "Post",
+    //     },
+    // ],
 });
 
 const Group = model('Group', groupSchema);

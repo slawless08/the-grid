@@ -11,11 +11,10 @@ const resolvers = {
         profile: async (parent, { profileId }) => {
             return Profile.findOne({ _id: profileId });
         },
-        posts: async (parent, { name }) => {
-            const params = name ? { name } : {};
-            return Post.find(params);
+        posts: async () => {
+            return Post.find();
         },
-        post: async (paren, { postId }) => {
+        post: async (parent, { postId }) => {
             return Post.findOne({ _id: postId });
         },
     },

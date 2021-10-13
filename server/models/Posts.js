@@ -6,8 +6,7 @@ const postSchema = new Schema({
         required: true,
     },
     author: {
-        type: Schema.Types.ObjectId,
-        ref: 'Profile',
+        type: String,
         required: true,
     }
 });

@@ -23,16 +23,24 @@ const typeDefs = gql`
         profiles: [Profile]!
         profile(profileId: ID!): Profile
         posts: [Post]
-        post:(postId: ID!): Post
+        post(postId: ID!): Post
     }
 
     type Mutation{
         addProfile(name: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addPost(text_content: String! author: String!): Post
+        addPost(text_content: String!, author: String!): Post
         removePost(postId: ID!): Post
         updatePost(postId: ID! text_content: String!): Post
+        
     }
 `
 
 module.exports = typeDefs;
+
+/*
+
+
+      
+        
+*/
