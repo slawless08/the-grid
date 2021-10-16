@@ -5,7 +5,6 @@ import Posts from '../components/Posts';
 import PostForm from '../components/PostForm';
 
 import { QUERY_POST } from '../utils/queries';
-import { QueryDocumentKeys } from 'graphql/language/visitor';
 
 const Home = () => {
 const { data } = useQuery(QUERY_POST);
