@@ -1,11 +1,11 @@
-const decode = require('jwt-decode');
+import decode from 'jwt-decode';
 
 class AuthService {
     getProfile(){
         return decode(this.getToken());
     }
 
-    loggedInd(){
+    loggedIn(){
         const token = this.getToken();
         return token && !this.isTokenExpired(token) ? true : false;
     }
