@@ -13,11 +13,11 @@ const Posts = ({
             <h3>POST</h3>
             {posts &&
             posts.map((post) => (
-                <div key={post._id}>
-                    <h4>
-                        Created by: {post.author}
-                    </h4>
-                    <div><p>{post.text_content}</p></div>
+                <div key={post._id} className="carb mb-3">
+                    <h6 className="card-header p-2">
+                        Posted by: {post.author}
+                    </h6>
+                    <div className="card-body p-2"><p>{post.text_content}</p></div>
                 </div>
             ))
             }
